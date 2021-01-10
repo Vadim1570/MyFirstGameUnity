@@ -30,15 +30,21 @@ public class CharacterControls : MonoBehaviour {
 
 	Animator anim;
 	string animWalk = "Walk";
-	string animRun = "Run";
+	string animFly = "Run";
 	string animEat = "Eat";
 	string animTurnhead = "Turn Head";
+
+	AudioManager aud;
+	string soundRun = "Run";
+	string soundFly = "Fly";
 
 	void  Start (){
 		// get the distance to ground
 		distToGround = GetComponent<Collider>().bounds.extents.y;
-
-		anim = GetComponent<Animator>(); 
+		//
+		anim = GetComponent<Animator>();
+		//
+		aud = FindObjectOfType<AudioManager>();
 	}
 	
 	bool IsGrounded (){
@@ -106,11 +112,15 @@ public class CharacterControls : MonoBehaviour {
 				//animation
 				if(velocityChange == Vector3.zero)
 				{ 
-					anim.SetBool(animRun, false); 
+					anim.SetBool(animWalk, false);
+					anim.SetBool(animFly, false); 
+					aud.Stop(soundFly);
 				}
 				else 
 				{ 
-					anim.SetBool(animRun, true);	
+					aud.Play(soundRun);
+					anim.SetBool(animWalk, true);
+					aud.Stop(soundFly);
 				}
 			}
 			else
@@ -130,6 +140,10 @@ public class CharacterControls : MonoBehaviour {
 				{
 					rb.AddForce(moveDir * 0.15f, ForceMode.VelocityChange);
 				}
+
+				//animation and sounds
+				aud.Play(soundFly);
+				anim.SetBool(animFly, true); 
 			}
 		}
 		else

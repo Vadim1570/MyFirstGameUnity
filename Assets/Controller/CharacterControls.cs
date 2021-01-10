@@ -28,9 +28,17 @@ public class CharacterControls : MonoBehaviour {
 	public Vector3 checkPoint;
 	private bool slide = false;
 
+	Animator anim;
+	string animWalk = "Walk";
+	string animRun = "Run";
+	string animEat = "Eat";
+	string animTurnhead = "Turn Head";
+
 	void  Start (){
 		// get the distance to ground
 		distToGround = GetComponent<Collider>().bounds.extents.y;
+
+		anim = GetComponent<Animator>(); 
 	}
 	
 	bool IsGrounded (){
@@ -93,6 +101,16 @@ public class CharacterControls : MonoBehaviour {
 				if (IsGrounded() && Input.GetButton("Jump"))
 				{
 					rb.velocity = new Vector3(velocity.x, CalculateJumpVerticalSpeed(), velocity.z);
+				}
+
+				//animation
+				if(velocityChange == Vector3.zero)
+				{ 
+					anim.SetBool(animRun, false); 
+				}
+				else 
+				{ 
+					anim.SetBool(animRun, true);	
 				}
 			}
 			else

@@ -37,16 +37,10 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\KillZone.cs" />
-     <Compile Include="Assets\Scripts\Bounce.cs" />
      <Compile Include="Assets\Scripts\FPSDisplay.cs" />
-     <Compile Include="Assets\Scripts\WallMovable.cs" />
      <Compile Include="Assets\Controller\CameraManager.cs" />
-     <Compile Include="Assets\Scripts\FallPlat.cs" />
      <Compile Include="Assets\Controller\CharacterControls.cs" />
-     <Compile Include="Assets\Scripts\Rotator.cs" />
      <Compile Include="Assets\Scripts\SavePos.cs" />
-     <Compile Include="Assets\Scripts\Pendulum.cs" />
-     <Compile Include="Assets\Scripts\MovableObs.cs" />
      <Compile Include="Assets\Scripts\AudioManager.cs" />
      <Compile Include="Assets\Scripts\Sound.cs" />
     <Reference Include="UnityEngine">

@@ -3,7 +3,7 @@ using System.Collections;
 
 [RequireComponent (typeof (Rigidbody))]
 [RequireComponent (typeof (CapsuleCollider))]
-
+[RequireComponent (typeof (Animator))]
 public class CharacterControls : MonoBehaviour {
 	
 	public float speed = 10.0f;

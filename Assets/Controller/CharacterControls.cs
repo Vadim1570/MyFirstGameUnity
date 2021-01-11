@@ -28,15 +28,25 @@ public class CharacterControls : MonoBehaviour {
 	public Vector3 checkPoint;
 	private bool slide = false;
 
+	#region Animator variables
 	Animator anim;
 	string animWalk = "Walk";
+	string animRun = "Run";
 	string animFly = "Run";
 	string animEat = "Eat";
 	string animTurnhead = "Turn Head";
+	#endregion
 
+	#region Audio variables
 	AudioManager aud;
+	string soundWalk = "Walk";
 	string soundRun = "Run";
 	string soundFly = "Fly";
+	string soundEat = "Eat";
+	string soundTurnhead = "Turn Head";	
+	#endregion
+
+	public HealthbarController healthbar;
 
 	void  Start (){
 		// get the distance to ground
@@ -61,6 +71,9 @@ public class CharacterControls : MonoBehaviour {
 	}
 	
 	void FixedUpdate () {
+
+		healthbar.onTakeDamage(0.005f);
+
 		if (canMove)
 		{
 			if (moveDir.x != 0 || moveDir.z != 0)
@@ -109,19 +122,28 @@ public class CharacterControls : MonoBehaviour {
 					rb.velocity = new Vector3(velocity.x, CalculateJumpVerticalSpeed(), velocity.z);
 				}
 
+				// Eat
+				if (IsGrounded() && Input.GetButton("Fire1"))
+				{
+					anim.SetBool(animEat, true);
+					healthbar.onTakeDamage(-0.1f);
+				}				
+
 				//animation
 				if(velocityChange == Vector3.zero)
 				{ 
 					anim.SetBool(animWalk, false);
-					anim.SetBool(animFly, false); 
-					aud.Stop(soundFly);
+					aud.Stop(soundWalk);
 				}
 				else 
 				{ 
-					aud.Play(soundRun);
+					aud.Play(soundWalk);
 					anim.SetBool(animWalk, true);
-					aud.Stop(soundFly);
+					anim.SetBool(animEat, false);
 				}
+
+				anim.SetBool(animFly, false); 
+				aud.Stop(soundFly);
 			}
 			else
 			{

@@ -43,6 +43,7 @@
      <Compile Include="Assets\Controller\CharacterControls.cs" />
      <Compile Include="Assets\Scripts\SavePos.cs" />
      <Compile Include="Assets\Scripts\Sound.cs" />
+     <Compile Include="Assets\Controller\HealthbarController.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

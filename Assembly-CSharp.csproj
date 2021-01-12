@@ -36,14 +36,15 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\KillZone.cs" />
-     <Compile Include="Assets\Scripts\FPSDisplay.cs" />
-     <Compile Include="Assets\Controller\CameraManager.cs" />
-     <Compile Include="Assets\Scripts\AudioManager.cs" />
-     <Compile Include="Assets\Controller\CharacterControls.cs" />
-     <Compile Include="Assets\Scripts\SavePos.cs" />
-     <Compile Include="Assets\Scripts\Sound.cs" />
-     <Compile Include="Assets\Controller\HealthbarController.cs" />
+     <Compile Include="Assets\Game\Scripts\KillZone.cs" />
+     <Compile Include="Assets\Game\Scripts\HealthbarController.cs" />
+     <Compile Include="Assets\Game\Scripts\FPSDisplay.cs" />
+     <Compile Include="Assets\Game\Scripts\CameraManager.cs" />
+     <Compile Include="Assets\Game\Scripts\AudioManager.cs" />
+     <Compile Include="Assets\Game\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Game\Scripts\SavePos.cs" />
+     <Compile Include="Assets\Game\Scripts\Sound.cs" />
+     <Compile Include="Assets\Game\Scripts\GameManager.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

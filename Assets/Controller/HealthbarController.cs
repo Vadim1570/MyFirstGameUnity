@@ -11,7 +11,18 @@ public class HealthbarController : MonoBehaviour
 
     public void onTakeDamage(float damage)
     {
-        health = health - damage;
+        addOrRemoveHealth(-1 * damage);
+    }
+
+    public void onAddHealth(float some)
+    {
+        addOrRemoveHealth(some);
+    }
+
+    private void addOrRemoveHealth(float delta)
+    {
+        health = health + delta;
         healthBar.fillAmount = health / startHealth;
     }
+
 }

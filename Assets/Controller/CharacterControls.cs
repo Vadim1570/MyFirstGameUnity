@@ -73,6 +73,7 @@ public class CharacterControls : MonoBehaviour {
 	void FixedUpdate () {
 
 		healthbar.onTakeDamage(0.005f);
+		if(healthbar.health < 0.1f) canMove = false;
 
 		if (canMove)
 		{
@@ -126,20 +127,28 @@ public class CharacterControls : MonoBehaviour {
 				if (IsGrounded() && Input.GetButton("Fire1"))
 				{
 					anim.SetBool(animEat, true);
-					healthbar.onTakeDamage(-0.1f);
-				}				
+					healthbar.onAddHealth(0.1f);
+				}	
 
-				//animation
-				if(velocityChange == Vector3.zero)
-				{ 
-					anim.SetBool(animWalk, false);
-					aud.Stop(soundWalk);
-				}
-				else 
+				// Eat
+				if (IsGrounded() && Input.GetButton("Fire2"))
+				{
+					anim.SetBool(animTurnhead, true);
+				}			
+
+				//Walk animation
+				if(velocityChange != Vector3.zero)
 				{ 
 					aud.Play(soundWalk);
 					anim.SetBool(animWalk, true);
 					anim.SetBool(animEat, false);
+					anim.SetBool(animTurnhead, false);
+				}
+				// Idle
+				else
+				{ 
+					anim.SetBool(animWalk, false);
+					aud.Stop(soundWalk);
 				}
 
 				anim.SetBool(animFly, false); 

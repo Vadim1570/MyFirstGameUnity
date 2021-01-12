@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour {
 	public float jumpHeight = 2.0f;
 	public float maxFallSpeed = 20.0f;
 	public float rotateSpeed = 25f; //Speed the player rotate
-	private Vector3 moveDir;
+	public Vector3 moveDir;
 	public GameObject cam;
 	private Rigidbody rb;
 
